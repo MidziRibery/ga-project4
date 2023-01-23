@@ -8,6 +8,7 @@ import helmet from "helmet";
 import morgan from "morgan";
 import path from "path";
 import { fileURLToPath } from "url";//properly set the path when we configure directory later
+import { register } from "./controllers/auth.js"
 
 /* Middleware Configurations */
 const __filename = fileURLToPath(import.meta.url)
@@ -38,6 +39,10 @@ const storage = multer.diskStorage({
 // these configurations and information can be found in GitHuB repo of Multer.
 
 const upload = multer({ storage }); // this will help to save the file
+
+//Authentication first, register and login [ROTUES WITH FILES]
+
+app.post("auth/register", upload.single("picture"), register);
 
 /*Setup Mongoose*/
 const PORT = process.env.port || 6001;
