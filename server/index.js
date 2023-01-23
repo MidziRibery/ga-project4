@@ -9,7 +9,9 @@ import morgan from "morgan";
 import path from "path";
 import { fileURLToPath } from "url";//properly set the path when we configure directory later
 import authRoutes from "./routes/auth.js"; // keeps our files organised and clean
+import userRoutes from "./routes/users.js";
 import { register } from "./controllers/auth.js";
+
 
 /* Middleware Configurations */
 const __filename = fileURLToPath(import.meta.url)
@@ -47,6 +49,7 @@ app.post("auth/register", upload.single("picture"), register);
 
 /* Routes */
 app.use("/auth", authRoutes);
+app.use("/user", userRoutes);
 
 /*Setup Mongoose*/
 const PORT = process.env.port || 6001;
