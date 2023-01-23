@@ -2,7 +2,8 @@ import mongoose from "mongoose"; //help to set up the model
 
 
 //why we do a ER diagram in the first place, to help us with arranging data here.
-//what are the type of data that I need 
+//what are the type of data that I need?
+//Step 1, create the mongoose schema first
 const UserSchema = new mongoose.Schema(
     {
         firstName: {
@@ -40,5 +41,10 @@ const UserSchema = new mongoose.Schema(
         occupation: String,
         viewedProfile: Number,
         impressions: Number,
-    }, {timestamps:}
+    }, 
+    {timestamps: true}
 );
+
+//Step 2: create the mongoose model
+const User = mongoose.model("User", UserSchema);
+export default User;      
