@@ -8,7 +8,8 @@ import helmet from "helmet";
 import morgan from "morgan";
 import path from "path";
 import { fileURLToPath } from "url";//properly set the path when we configure directory later
-import { register } from "./controllers/auth.js"
+import authRoutes from "./routes/auth.js"; // keeps our files organised and clean
+import { register } from "./controllers/auth.js";
 
 /* Middleware Configurations */
 const __filename = fileURLToPath(import.meta.url)
@@ -43,6 +44,9 @@ const upload = multer({ storage }); // this will help to save the file
 //Authentication first, register and login [ROTUES WITH FILES]
 
 app.post("auth/register", upload.single("picture"), register);
+
+/* Routes */
+app.use("/auth", authRoutes);
 
 /*Setup Mongoose*/
 const PORT = process.env.port || 6001;
