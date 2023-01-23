@@ -10,7 +10,10 @@ import path from "path";
 import { fileURLToPath } from "url";//properly set the path when we configure directory later
 import authRoutes from "./routes/auth.js"; // keeps our files organised and clean
 import userRoutes from "./routes/users.js";
+import postRoutes from "./routes/posts.js";
 import { register } from "./controllers/auth.js";
+import { createPost } from "./controllers/posts.js";
+import { verifyToken } from "./middleware/auth.js";
 
 
 /* Middleware Configurations */
@@ -44,12 +47,13 @@ const storage = multer.diskStorage({
 const upload = multer({ storage }); // this will help to save the file
 
 //Authentication first, register and login [ROTUES WITH FILES]
-
 app.post("auth/register", upload.single("picture"), register);
+app.post("/posts", verifyToken, upload.single("picture"), createPost);
 
 /* Routes */
 app.use("/auth", authRoutes);
 app.use("/user", userRoutes);
+app.use("/posts", postRoutes);
 
 /*Setup Mongoose*/
 const PORT = process.env.port || 6001;
