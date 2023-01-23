@@ -39,7 +39,7 @@ export const register = async (req, res) => {
     }
 };
 
-/* Logging In */
+/* Logging In - Gives token/validation that users can use to sign in */ 
 export const login = async (req,res) => {
     try {
         const { email, password} = req.body;
@@ -50,8 +50,9 @@ export const login = async (req,res) => {
         if (!isMatch) return res.satus(400).json({ msg: "Invalid credentials. "}); //to validate correct password
 
         const token = jwt.sign({id: used._id }, process.env.JWT_SECRET);
-
+        delete user.password;// to ensure this does not get send to the front end
+        res.status(200).json({ token, user});
     } catch (err) {
         res.status(500).json({ error: err.message }); 
     }
-}|
+};
