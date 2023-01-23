@@ -1,5 +1,4 @@
 import express from "express";
-import { verify } from "jsonwebtoken";
 import { getFeedPosts, getUserPosts, likePost } from "../controllers/posts.js" //creating these from the controllers.
 import { verifyToken } from "../middleware/auth.js";
 
