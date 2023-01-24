@@ -1,7 +1,7 @@
 import mongoose from "mongoose"; //to help setup the model
 
 //Step 1: Create mongoose schema
-const PostSchema = new mongoose.schema(
+const postSchema = mongoose.Schema(
     {
         userID: {
             type: Number,
@@ -36,6 +36,6 @@ const PostSchema = new mongoose.schema(
 );
 
 //Step 2: Create mongoose model
-const Post = mongoose.model("Post", PostSchema);
+const Post = mongoose.model("Post", postSchema);
 export default Post;
 
