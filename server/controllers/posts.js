@@ -14,7 +14,7 @@ export const createPost = async (req, res) => {
             lastName: user.lastName,
             location: user.location,
             description,
-            iserPicturePath: user.picturePath,
+            userPicturePath: user.picturePath,
             picturePath,
             likes: {},
             comments: []
@@ -50,4 +50,29 @@ export const getUserPosts = async (req, res) => {
     }
 }
 /* UPDATE function */
+export const likePost = async (req, res) => {
+    try {
+        const { id } = req.params; //id comes from query string
+        const { userId } = req.body; //userId comes from the body of the request
+        const post = await Post.findById(id); //this is the post
+        const isLiked = post.likes.get(userId);//to check in the likes if the userId exists. If the userId exists, means that post has been liked by that particular person
+        
+        if (isLiked) {
+            post.likes.delete(userId); //delete from object list if already exists
+        } else {
+            post.likes.set(userId, true); //adds if not
+        }
+
+        const updatedPost = await Post.findByIdAndUpdate(
+            id,
+            { likes: post.likes }, //pass in likes to the new post
+            { new: true } 
+        );
+
+        res.status(200).json(updatedPost);//update the frontEnd once user get the like button
+    } catch (err) {
+        res.status(404).json({ message: err.message})
+    } 
+}
+
 /* DELETE function */
