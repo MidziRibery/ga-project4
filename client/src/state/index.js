@@ -15,6 +15,7 @@ const initialState = {
     posts: [],
 };
 
+// here we going to create simple fuctions that modify our state
 export const authSlice = createSlice({
     name: "auth",
     initialState,
@@ -29,6 +30,26 @@ export const authSlice = createSlice({
         setLogout: (state) => { //when hit logout button, it's going to reset.
             state.user = null;
             state.token = null;
+        },
+        setFriends: (state, action) => {
+            if (state.user) { //if user already exists, we going to set friends inside our state
+                state.user.friends = action.payload.friends;
+            } else {
+                console.error("user friends non-existent");
+            }
+        },
+        setPosts: (state, action) => { // just going to set the posts
+            state.posts = action.payload.posts;
+        },
+        setPost: (state, action) => {
+            const updatedPosts = state.posts.map((post) => {
+                if (post._id === action.payload.post_id) return action.payload.post; //only update the post that was changed
+                return post;
+            });
+            state.posts = updatedPosts; 
         }
     }
 })
+
+export const { setMode, setLogin, setLogout, setFriends, setPosts, setPost } = autheSlice.actions;
+export default authSlice.reducer;
