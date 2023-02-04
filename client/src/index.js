@@ -21,6 +21,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 // find more info on redux toolkit and redux persists documentation
 const persistConfig = { key: "root", storage, version: 1 };
 const persistedReducer = persistReducer(persistConfig, authReducer);
+//toolkit, local storage.
 const store = configureStore({
   reducer: persistedReducer,
   middlerware: (getDefaultMiddleware) =>
@@ -42,5 +43,5 @@ root.render(
 
   </React.StrictMode>
 );
-//stopped at 2:08:18 2Feb2023
+
 
