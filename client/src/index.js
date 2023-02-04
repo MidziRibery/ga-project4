@@ -35,12 +35,12 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <PersistGate loading={nul} persistor={persistStore(store)}>
+      <PersistGate loading={null} persistor={persistStore(store)}>
         <App />
       </PersistGate>
     </Provider>
 
   </React.StrictMode>
 );
-
+//stopped at 2:08:18 2Feb2023
 
