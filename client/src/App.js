@@ -18,14 +18,14 @@ const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]); // to set
   return (
     <div className="app">
       <BrowserRouter>
-        <ThemeProvider theme={theme}>
+        {/* <ThemeProvider theme={theme}> */}
           <CssBaseline/>
-          <Routes>
-            <Route path='/' element={<LoginPage />} />
-            <Route path='/home' element={<HomePage/>} />
-            <Route path='/profile/:userId' element={<ProfilePage/>} />
-          </Routes>
-          </ThemeProvider>
+            <Routes>
+              <Route path='/' element={<LoginPage />} />
+              <Route path='/home' element={<HomePage/>} />
+              <Route path='/profile/:userId' element={<ProfilePage/>} />
+            </Routes>
+          {/* </ThemeProvider> */}
         </BrowserRouter>
     </div>
   );
