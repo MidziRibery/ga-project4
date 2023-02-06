@@ -4,7 +4,7 @@ import LoginPage from "scenes/loginPage";
 import ProfilePage from "scenes/profilePage";
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
-import { CssBaseline, ThemeProvider } from "@mui/material";
+import { ThemeProvider } from "@mui/material";
 import { createTheme } from "@mui/material/styles";
 import { themeSettings } from "./theme.js";
 
@@ -18,14 +18,14 @@ const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]); // to set
   return (
     <div className="app">
       <BrowserRouter>
-        {/* <ThemeProvider theme={theme}> */}
-          <CssBaseline/>
+        <ThemeProvider theme={theme}>
+
             <Routes>
               <Route path='/' element={<LoginPage />} />
               <Route path='/home' element={<HomePage/>} />
               <Route path='/profile/:userId' element={<ProfilePage/>} />
             </Routes>
-          {/* </ThemeProvider> */}
+          </ThemeProvider>
         </BrowserRouter>
     </div>
   );
