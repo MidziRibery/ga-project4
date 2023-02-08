@@ -1,5 +1,6 @@
 import React from 'react'
 import { Box, Typography, useTheme, useMediaQuery } from "@mui/material"
+import Form from "./Form";
 
 const LoginPage = () => {
   const theme = useTheme(); //to use the colours
@@ -33,6 +34,6 @@ const LoginPage = () => {
 
       </Box>
     </Box>;
-}; //stop here 7Feb2023 10:15pm 2:49:29
+}; 
 
 export default LoginPage;
