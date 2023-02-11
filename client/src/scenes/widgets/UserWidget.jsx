@@ -152,3 +152,5 @@ return (
     </WidgetWrapper>
 )
 };
+
+export default UserWidget;
