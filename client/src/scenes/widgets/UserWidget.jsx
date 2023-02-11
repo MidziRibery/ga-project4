@@ -78,7 +78,8 @@ return (
                         {friends.length} friends
                     </Typography>
                 </Box>
-                <ManageAccountsOutlined />
+            </FlexBetween>
+            <ManageAccountsOutlined />
             </FlexBetween>
             <Divider/>
 
@@ -97,7 +98,8 @@ return (
                     </Typography>
                 </Box>
             </Box>
-
+            <Divider/>
+            
             {/* Third Row */}
 <Box p ="1rem 0">
     <FlexBetween mb="0.5rem">
@@ -148,7 +150,7 @@ return (
 </Box>
 
 
-        </FlexBetween>
+
     </WidgetWrapper>
 )
 };
