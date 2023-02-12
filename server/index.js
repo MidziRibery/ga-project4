@@ -49,7 +49,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage }); // this will help to save the file
 
-//Authentication first, register and login [ROTUES WITH FILES]
+//Authentication first, register and login [ROUTES WITH FILES]
 app.post("auth/register", upload.single("picture"), register);
 app.post("/posts", verifyToken, upload.single("picture"), createPost);
 
