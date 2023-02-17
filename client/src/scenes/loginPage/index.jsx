@@ -13,7 +13,7 @@ const LoginPage = () => {
       width="100%"
       // backgroundColor={theme.pallete.background.alt}
       p="1rem 6%" 
-      textAligh ="center">
+      textAlign ="center">
         <Typography
         fontWeight="bold"
         fontSize="32px"

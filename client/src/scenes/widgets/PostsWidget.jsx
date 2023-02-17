@@ -10,6 +10,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
 
   //1st API call: grab all the post from everyone.
   const getPosts = async () => {
+    console.log("getPosts() fired ")
     const response = await fetch("http://localhost:3001/posts", {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
@@ -19,18 +20,25 @@ const PostsWidget = ({ userId, isProfile = false }) => {
   };
 
   const getUserPosts = async () => {
-    const response = await fetch(
-      `http://localhost:3001/posts/${userId}/posts`,
-      {
-        method: "GET",
-        headers: { Authorization: `Bearer ${token}` },
-      }
-    );
-    const data = await response.json();
-    dispatch(setPosts({ posts: data }));
+    console.log("getUserPosts() fired with userId", userId);
+    try{
+      const response = await fetch(
+        `http://localhost:3001/posts/${userId}/posts`,
+        {
+          method: "GET",
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      const data = await response.json();
+      dispatch(setPosts({ posts: data }));
+    }catch(e){
+      console.log("GET /posts/:userId/posts encountered an error", e);
+    }
+    
   };
 
   useEffect(() => {
+    console.log("useEffect fired with isProfile", isProfile);
     if (isProfile) {
       getUserPosts();
     } else {
@@ -40,7 +48,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
 
   return (
     <>
-      {posts.map(
+      { posts.length > 1 ? posts.map(
         ({
           _id,
           userId,
@@ -66,7 +74,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
             comments={comments}
           />
         )
-      )}
+      ) : null }
     </>
   );
 };

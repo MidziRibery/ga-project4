@@ -62,6 +62,7 @@ const Form = () => {
   const isRegister = pageType === "register";
 
   const register = async (values, onSubmitProps) => {
+    console.log("register function is called");
     // this allows us to send form info with image
     const formData = new FormData();
     for (let value in values) {
@@ -69,6 +70,7 @@ const Form = () => {
     }
     formData.append("picturePath", values.picture.name);
 
+    console.log("before calling fetch");
     const savedUserResponse = await fetch(
       "http://localhost:3001/auth/register",
       {
@@ -76,6 +78,7 @@ const Form = () => {
         body: formData,
       }
     );
+    console.log("fetch response", savedUserResponse);
     const savedUser = await savedUserResponse.json();
     onSubmitProps.resetForm();
 

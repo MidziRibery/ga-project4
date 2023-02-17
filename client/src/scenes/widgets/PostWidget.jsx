@@ -23,18 +23,26 @@ import {
     likes,
     comments,
   }) => {
+    console.log("first line of functional component");
     const [isComments, setIsComments] = useState(false);
     const dispatch = useDispatch();
     const token = useSelector((state) => state.token);
-    const loggedInUserId = useSelector((state) => state.user._id);
-    const isLiked = Boolean(likes[loggedInUserId]);
-    const likeCount = Object.keys(likes).length;
+    
+    // MOCKS
+    const loggedInUserId = "tsdfsdlk";
+    const isLiked = false;
+    const likeCount = 0;
+    
+    // const loggedInUserId = useSelector((state) => state.user._id);    
+    // const isLiked = Boolean(likes[loggedInUserId]);
+    // const likeCount = Object.keys(likes).length;
   
     const { palette } = useTheme();
     const main = palette.neutral.main;
     const primary = palette.primary.main;
   
     const patchLike = async () => {
+      console.log("patchLike() fired");
       const response = await fetch(`http://localhost:3001/posts/${postId}/like`, {
         method: "PATCH",
         headers: {
@@ -47,6 +55,7 @@ import {
       dispatch(setPost({ post: updatedPost }));
     };
   
+    console.log("before return statement");
     return (
       <WidgetWrapper m="2rem 0">
         <Friend
@@ -84,7 +93,7 @@ import {
               <IconButton onClick={() => setIsComments(!isComments)}>
                 <ChatBubbleOutlineOutlined />
               </IconButton>
-              <Typography>{comments.length}</Typography>
+              {/* <Typography>{comments.length}</Typography> */}
             </FlexBetween>
           </FlexBetween>
   
