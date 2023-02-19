@@ -29,11 +29,11 @@ import {
     const token = useSelector((state) => state.token);
     
     // MOCKS
-    const loggedInUserId = "tsdfsdlk";
+    // const loggedInUserId = "63ee0c065351c8879b48b9ec";
     const isLiked = false;
     const likeCount = 0;
     
-    // const loggedInUserId = useSelector((state) => state.user._id);    
+    const loggedInUserId = useSelector((state) => state.user._id);// got this to work
     // const isLiked = Boolean(likes[loggedInUserId]);
     // const likeCount = Object.keys(likes).length;
   

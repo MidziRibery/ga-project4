@@ -73,7 +73,7 @@ return (
                         }
                     }}
                     >
-                        {firstName}{lastName}
+                        {firstName} {lastName}
                     </Typography>
                     <Typography color={medium}>
                         {friends.length} friends
