@@ -55,7 +55,7 @@ app.post("/posts", verifyToken, upload.single("picture"), createPost);
 
 /* Routes */
 app.use("/auth", authRoutes);
-app.use("/user", userRoutes);
+app.use("/users", userRoutes); // changed from user to users
 app.use("/posts", postRoutes);
 
 /*Setup Mongoose*/
