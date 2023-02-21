@@ -4,25 +4,21 @@ import mongoose from "mongoose"; //to help setup the model
 const postSchema = mongoose.Schema(
     {
         userID: {
-            type: Number,
-            required: true
+            type: String,
+            required: true,
         },
         firstName: {
             type: String,
             required: true,
-            min: 2,
-            max: 50,
         },
         lastName: {
             type: String,
             required: true,
-            min: 2,
-            max: 50,
         },
         location: String,
         description: String,
-        userPicturePath: String,
         picturePath: String,
+        userPicturePath: String,
         likes: { //if one likes it, it will add to the map. If unlikes, remove from the Map.
             type: Map, //check if the userID exists in the map.
             of: Boolean, //value will be true always if it exists

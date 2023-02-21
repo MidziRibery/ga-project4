@@ -21,8 +21,8 @@ const UserSchema = new mongoose.Schema(
         email: {
             type: String,
             required: true,
-            unique: true,
             max: 50,
+            unique: true,
         },
         password: {
             type: String,
@@ -42,7 +42,7 @@ const UserSchema = new mongoose.Schema(
         viewedProfile: Number,
         impressions: Number,
     }, 
-    {timestamps: true}
+    { timestamps: true }
 );
 
 //Step 2: create the mongoose model

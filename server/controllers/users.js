@@ -21,12 +21,12 @@ export const getUserFriends = async (req, res) => {
             user.friends.map((id) => User.findById(id))
         );
     
-        const formmattedFriends = friends.map( //proper way format for Friends for frontend
+        const formattedFriends = friends.map( //proper way format for Friends for frontend
             ({ _id, firstName, lastName, occupation, location, picturePath}) => {
                 return { _id, firstName, lastName, occupation, location, picturePath};
             }
         );
-        res.status(200).json(formmattedFriends);
+        res.status(200).json(formattedFriends);
         } catch (err) {
         res.status(404).json({ message: err.message });
     }

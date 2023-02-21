@@ -32,7 +32,7 @@ app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 app.use("/assets", express.static(path.join(__dirname, "public/assets"))); //set the directory of where we keep our assets aka images,locally.
-app.use("/auth", authRoutes)
+// app.use("/auth", authRoutes)
 /* FILE STORAGE */
 
 //this is how someone saves a file. Eveytime someone uploads a file onto the website,
