@@ -24,18 +24,19 @@ import {
     comments,
   }) => {
     console.log("first line of functional component");
+    console.log("PostWidget Props", name, userPicturePath);
     const [isComments, setIsComments] = useState(false);
     const dispatch = useDispatch();
     const token = useSelector((state) => state.token);
     
     // MOCKS
     // const loggedInUserId = "63ee0c065351c8879b48b9ec";
-    const isLiked = false;
-    const likeCount = 0;
+    // const isLiked = false;
+    // const likeCount = 0;
     
     const loggedInUserId = useSelector((state) => state.user._id);// got this to work
-    // const isLiked = Boolean(likes[loggedInUserId]);
-    // const likeCount = Object.keys(likes).length;
+    const isLiked = Boolean(likes[loggedInUserId]);
+    const likeCount = Object.keys(likes).length;
   
     const { palette } = useTheme();
     const main = palette.neutral.main;
@@ -73,7 +74,7 @@ import {
             height="auto"
             alt="post"
             style={{ borderRadius: "0.75rem", marginTop: "0.75rem" }}
-            src={`http://localhost:3001/assets/${picturePath}`}
+            src={`http://localhost:3001/assets/${picturePath}`}//this is the issue, but why? it should be under data/index.js
           />
         )}
         <FlexBetween mt="0.25rem">

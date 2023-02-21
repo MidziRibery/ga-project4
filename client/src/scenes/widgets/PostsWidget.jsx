@@ -16,6 +16,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
       headers: { Authorization: `Bearer ${token}` },
     });
     const data = await response.json();
+    console.log("posts data", data);
     dispatch(setPosts({ posts: data }));
   };
 
@@ -30,6 +31,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
         }
       );
       const data = await response.json();
+      console.log("user posts data", data);
       dispatch(setPosts({ posts: data }));
     }catch(e){
       console.log("GET /posts/:userId/posts encountered an error", e);
@@ -48,7 +50,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
 
   return (
     <>
-      { posts.length > 1 ? posts.map(
+      { posts.length > 0 ? posts.map(
         ({
           _id,
           userId,

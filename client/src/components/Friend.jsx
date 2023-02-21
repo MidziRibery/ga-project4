@@ -7,6 +7,7 @@ import FlexBetween from "./FlexBetween";
 import UserImage from "./UserImage";
 
 const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
+  console.log("props", name, userPicturePath);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { _id } = useSelector((state) => state.user);
