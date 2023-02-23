@@ -57,6 +57,7 @@ import {
     };
   
     console.log("before return statement");
+    console.log("postUserId > friendId", postUserId);
     return (
       <WidgetWrapper m="2rem 0">
         <Friend
@@ -94,7 +95,7 @@ import {
               <IconButton onClick={() => setIsComments(!isComments)}>
                 <ChatBubbleOutlineOutlined />
               </IconButton>
-              {/* <Typography>{comments.length}</Typography> */}
+              <Typography>{comments.length}</Typography>
             </FlexBetween>
           </FlexBetween>
   

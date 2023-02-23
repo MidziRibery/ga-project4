@@ -21,6 +21,8 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
   const medium = palette.neutral.medium;
 
   const isFriend = friends.find((friend) => friend._id === friendId);
+  console.log(friendId)// to test if friendId is activated
+  //here we cannot .find friends because it is not an array.
 
   const patchFriend = async () => {
     const response = await fetch(

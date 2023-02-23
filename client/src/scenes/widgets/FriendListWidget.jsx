@@ -24,6 +24,7 @@ const FriendListWidget = ({ userId }) => {
   };
 
   useEffect(() => {
+    console.log("useEffect getFriends()");
     getFriends();
   }, []);
 

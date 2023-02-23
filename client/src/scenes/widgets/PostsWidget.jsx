@@ -53,7 +53,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
       { posts.length > 0 ? posts.map(
         ({
           _id,
-          userId,
+          userID : userId, // received as userID, renamed to userId
           firstName,
           lastName,
           description,
